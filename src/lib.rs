@@ -23,7 +23,7 @@
 //! wrapper also uses symbol table information provided by the `object` crate.
 #![deny(missing_docs)]
 #![no_std]
-#![cfg_attr(not(feature = "std"), feature(alloc))]
+// #![cfg_attr(not(feature = "std"), feature(alloc))]
 
 #[cfg(feature = "std")]
 #[macro_use]
@@ -238,8 +238,9 @@ impl<R: gimli::Reader> Context<R> {
                 prev_end = range.0.end;
             }
         }
-        debug_assert!(unit_ranges.windows(2).all(|w| w[0].0.end <= w[1].0.begin));
+        // debug_assert!(unit_ranges.windows(2).all(|w| w[0].0.end <= w[1].0.begin));
 
+        // assert!(false);
         Ok(Context {
             units: res_units,
             unit_ranges,
